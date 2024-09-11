@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const BASE_URL = "https://api-sandbox.confirmsign.com/v4.0";
-const API_CFS_KEY = process.env.REACT_APP_API_CFS_KEY;
-const API_CFS_TOKEN = process.env.REACT_APP_API_CFS_TOKEN;
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
@@ -11,9 +9,9 @@ const apiClient = axios.create({
   },
 });
 
-export const getThreadByToken = async () => {
+export const getThreadByToken = async (cfsKey, cfsToken) => {
   try {
-    const url = `/threads/token/${API_CFS_KEY}/${API_CFS_TOKEN}`;
+    const url = `/threads/token/${cfsKey}/${cfsToken}`;
     const response = await apiClient.get(url);
     return response.data;
   } catch (error) {
@@ -21,9 +19,9 @@ export const getThreadByToken = async () => {
   }
 };
 
-export const postAcceptThread = async (agreementData) => {
+export const postAcceptThread = async (cfsKey, cfsToken, agreementData) => {
   try {
-    const url = `/threads/token/${API_CFS_KEY}/${API_CFS_TOKEN}/agreement/true`;
+    const url = `/threads/token/${cfsKey}/${cfsToken}/agreement/true`;
     const response = await apiClient.post(url, agreementData);
     return response.data;
   } catch (error) {

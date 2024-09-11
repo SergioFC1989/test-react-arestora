@@ -1,0 +1,33 @@
+.data-table {
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+  overflow-x: auto;
+  gap: 12px;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: white;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #e7e7e7;
+  }
+
+  &__button {
+    width: fit-content;
+  }
+}

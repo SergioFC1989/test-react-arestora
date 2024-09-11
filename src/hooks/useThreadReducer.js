@@ -9,22 +9,32 @@ import { getThreadByToken, postAcceptThread } from "../services/api";
 export const useThreadReducer = () => {
   const [state, dispatch] = useReducer(threadReducer, initialState);
 
-  const getThread = useCallback(async () => {
-    dispatch({ type: threadAction.FETCH_THREAD_REQUEST });
-    try {
-      const response = await getThreadByToken();
-      dispatch({ type: threadAction.FETCH_THREAD_SUCCESS, payload: response });
-    } catch (error) {
-      console.error("Error fetching thread:", error);
-      dispatch({ type: threadAction.FETCH_THREAD_FAILURE, payload: error });
-    }
-  }, [dispatch]);
+  const getThread = useCallback(
+    async (cfsKey, cfsToken) => {
+      dispatch({ type: threadAction.FETCH_THREAD_REQUEST });
+      try {
+        const response = await getThreadByToken(cfsKey, cfsToken);
+        dispatch({
+          type: threadAction.FETCH_THREAD_SUCCESS,
+          payload: response,
+        });
+      } catch (error) {
+        console.error("Error fetching thread:", error);
+        dispatch({ type: threadAction.FETCH_THREAD_FAILURE, payload: error });
+      }
+    },
+    [dispatch]
+  );
 
   const acceptThread = useCallback(
-    async (agreementData) => {
+    async (cfsKey, cfsToken, agreementData) => {
       dispatch({ type: threadAction.ACCEPT_THREAD_REQUEST });
       try {
-        const response = await postAcceptThread(agreementData);
+        const response = await postAcceptThread(
+          cfsKey,
+          cfsToken,
+          agreementData
+        );
         dispatch({
           type: threadAction.ACCEPT_THREAD_SUCCESS,
           payload: response,
