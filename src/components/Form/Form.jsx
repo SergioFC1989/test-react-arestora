@@ -2,6 +2,7 @@ import React from "react";
 
 import { InputCheckBox } from "../InputCheckBox/InputCheckBox";
 import { InputText } from "../InputText/InputText";
+import { Loader } from "../Loader/Loader";
 
 import iconCheckSquare from "../../assets/icon-check-square.svg";
 import "./Form.scss";
@@ -13,6 +14,7 @@ export const Form = ({
   errors,
   textButton,
   isClosed,
+  isLoading,
 }) => {
   const renderTextInput = (field, options, hasAnswers) =>
     options.map((option) => {
@@ -105,13 +107,17 @@ export const Form = ({
                 {renderField(field)}
               </div>
             ))}
-            <button
-              className="form__submit-button"
-              disabled={isClosed}
-              type="submit"
-            >
-              {textButton}
-            </button>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <button
+                className="form__submit-button"
+                disabled={isClosed}
+                type="submit"
+              >
+                {textButton}
+              </button>
+            )}
           </form>
         </div>
       ))}

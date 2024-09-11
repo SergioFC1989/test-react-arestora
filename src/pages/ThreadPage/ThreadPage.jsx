@@ -66,12 +66,12 @@ export const ThreadPage = () => {
         })),
       },
     };
-    console.log(data);
-    // await acceptThread(
-    //   params.cfsKey,
-    //   params.cfsToken,
-    //   agreementData.agreement.forms
-    // );
+
+    await acceptThread(
+      params.cfsKey,
+      params.cfsToken,
+      agreementData.agreement.forms
+    );
   };
 
   if (state.loading) {
@@ -97,6 +97,7 @@ export const ThreadPage = () => {
           data={state.thread.agreement.forms}
           textButton={state.thread.agreement.accept_button_text}
           isClosed={state.thread.closed || state.loading}
+          isLoading={state.loading}
         />
       </section>
     )
