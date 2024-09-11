@@ -49,4 +49,11 @@
     color: var(--danger-color);
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    &__title {
+      flex-direction: column-reverse;
+      gap: 12px;
+    }
+  }
 }
