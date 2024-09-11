@@ -26,15 +26,51 @@ export const ThreadPage = () => {
       getThread(params.cfsKey, params.cfsToken);
   }, [getThread]);
 
+  const mapEntriesToOids = (data) => {
+    return Object.entries(data).map(([oid, value]) => ({ oid, value }));
+  };
+
   const onSubmit = async (data) => {
-    const mappedThread = state.thread.agreement.forms.map((form) =>
-      form.questions.map((question) => question.options.map((option) => option))
-    );
-    console.log(mappedThread);
+    const mappedEntriesToOids = mapEntriesToOids(data);
+
+    const agreementData = {
+      ...state.thread,
+      agreement: {
+        ...state.thread.agreement,
+        forms: state.thread.agreement.forms.map((form) => ({
+          ...form,
+          questions: form.questions.map((question) => ({
+            ...question,
+            answers: question.options.map((option) => {
+              const valueOid = mappedEntriesToOids.find(
+                (elem) => String(elem.oid) === String(option.oid)
+              );
+
+              return {
+                ...option,
+                value: String(valueOid.value),
+              };
+            }),
+            options: question.options.map((option) => {
+              const defaultValue = question.type === "TEXT" ? "" : false;
+              const valueOid = mappedEntriesToOids.find(
+                (elem) => String(elem.oid) === String(option.oid)
+              );
+
+              return {
+                ...option,
+                value: String(valueOid.value) || String(defaultValue),
+              };
+            }),
+          })),
+        })),
+      },
+    };
+    console.log(data);
     // await acceptThread(
     //   params.cfsKey,
     //   params.cfsToken,
-    //   state.thread.agreement.forms
+    //   agreementData.agreement.forms
     // );
   };
 

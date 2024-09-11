@@ -12,6 +12,22 @@
     gap: 18px;
   }
 
+  &__render-check-box-input {
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__render-text-input {
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   &__submit-button {
     width: fit-content;
   }
