@@ -1,0 +1,59 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--neutral-color);
+  border-radius: 4px;
+  padding: 10px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__closed {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__render-check-box-input {
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__render-text-input {
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__submit-button {
+    width: fit-content;
+  }
+
+  &__text-error {
+    padding: 0.5rem;
+    background-color: #f8d7da;
+    color: var(--danger-color);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    &__title {
+      flex-direction: column-reverse;
+      gap: 12px;
+    }
+  }
+}

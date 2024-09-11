@@ -11,10 +11,10 @@ import "./AlertError.scss";
  * @returns {JSX.Element} The rendered AlertError component.
  */
 export const AlertError = ({ title, messages }) => (
-  <div className="alert-error">
+  <div className="error">
     <p className="alert-error__title">{title}</p>
     {messages.map(({ message }) => (
-      <p key={message}>{message}</p>
+      <span key={message}>{message}</span>
     ))}
   </div>
 );

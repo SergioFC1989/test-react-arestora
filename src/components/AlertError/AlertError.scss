@@ -1,17 +1,9 @@
 .alert-error {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(230, 65, 65);
-  border-radius: 4px;
-  padding: 14px;
-  gap: 4px;
-  margin-bottom: 16px;
-
   &__title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     padding: 8px 0px;
     margin-bottom: 8px;
-    border-bottom: 1px solid rgb(200, 50, 50);
+    border-bottom: var(--danger-color);
   }
 }
