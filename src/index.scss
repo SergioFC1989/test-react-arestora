@@ -1,6 +1,8 @@
 :root {
   --primary-color: #008cff;
   --secondary-color: #0056b3;
+  --danger-color: #721c24;
+  --neutral-color: #f5f5f5;
 }
 
 code {
@@ -52,6 +54,11 @@ button:hover {
   background-color: var(--secondary-color);
 }
 
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 span {
   color: #202020;
 }
@@ -64,4 +71,16 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: var(--danger-color);
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  gap: 4px;
 }

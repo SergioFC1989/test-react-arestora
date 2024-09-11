@@ -30,7 +30,6 @@ export const MainPage = () => {
         <InputText
           label="CFS Key"
           placeholder="Introduzca un CFS Key..."
-          value="Q5599222HHXiihh6GG8822jj"
           register={register}
           name="cfsKey"
           required
@@ -39,7 +38,6 @@ export const MainPage = () => {
           label="CFS Token"
           placeholder="Introduzca un CFS Token..."
           register={register}
-          value="bf2e7a0ed8af913cca266eea6c1f09100e07ae85021e81d5ff5ed2f8a350b384"
           name="cfsToken"
           required
         />

@@ -1,0 +1,7 @@
+.not-found-page {
+  &__link {
+    color: var(--danger-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { threadAction } from "../actions/threadAction";
 import { threadReducer } from "../reducers/threadReducer";
@@ -7,6 +8,7 @@ import { threadState as initialState } from "../states/threadState";
 import { getThreadByToken, postAcceptThread } from "../services/api";
 
 export const useThreadReducer = () => {
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(threadReducer, initialState);
 
   const getThread = useCallback(
@@ -20,7 +22,7 @@ export const useThreadReducer = () => {
         });
       } catch (error) {
         console.error("Error fetching thread:", error);
-        dispatch({ type: threadAction.FETCH_THREAD_FAILURE, payload: error });
+        navigate("/error/404");
       }
     },
     [dispatch]
@@ -40,8 +42,8 @@ export const useThreadReducer = () => {
           payload: response,
         });
       } catch (error) {
-        console.error("Error accepting thread:", error);
-        dispatch({ type: threadAction.ACCEPT_THREAD_FAILURE, payload: error });
+        console.error("Error accepting thread:", error.message);
+        navigate("/error/404");
       }
     },
     [dispatch]

@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--neutral-color);
+  border-radius: 4px;
+  padding: 10px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__submit-button {
+    width: fit-content;
+  }
+
+  &__text-error {
+    padding: 0.5rem;
+    background-color: #f8d7da;
+    color: var(--danger-color);
+    border-radius: 4px;
+  }
+}
