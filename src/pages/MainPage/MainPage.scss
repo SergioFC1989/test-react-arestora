@@ -9,12 +9,18 @@
     align-items: center;
     justify-items: center;
     gap: 16px;
-    background-color: rgb(226, 226, 226);
+    background-color: var(--neutral-color);
     border-radius: 4px;
     padding: 12px;
   }
 
   &__button-submit {
     width: 10%;
+  }
+
+  @media (max-width: 768px) {
+    &__button-submit {
+      width: 50%;
+    }
   }
 }

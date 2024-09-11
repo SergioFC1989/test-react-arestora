@@ -28,10 +28,12 @@ export const DataTable = ({ data, initialRows = 1, titleTable }) => {
   return (
     hasData && (
       <div className="data-table">
-        <h3>{titleTable}</h3>
-        <button className="data-table__button" onClick={handleShowMoreOrLess}>
-          {textButton}
-        </button>
+        <div className="data-table__title">
+          <h3>{titleTable}</h3>
+          <button className="data-table__button" onClick={handleShowMoreOrLess}>
+            {textButton}
+          </button>
+        </div>
         <table>
           <thead>
             <tr>

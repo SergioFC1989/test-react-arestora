@@ -19,7 +19,7 @@ export const MainPage = () => {
 
   return (
     <div className="main-page">
-      <h3>Busca un hilo y comienza a trabajar</h3>
+      <h3>BUSCA INFORMACIÓN DE UN HILO</h3>
       {Object.keys(errors).length > 0 && (
         <AlertError
           title="Por favor, comprueba el formulario"

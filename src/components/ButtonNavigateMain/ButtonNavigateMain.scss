@@ -1,0 +1,12 @@
+.button-navigate-main {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &--danger {
+    color: var(--danger-color);
+  }
+
+  &--primary {
+    color: var(--primary-color);
+  }
+}
