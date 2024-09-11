@@ -2,6 +2,8 @@ import React from "react";
 
 import { InputCheckBox } from "../InputCheckBox/InputCheckBox";
 import { InputText } from "../InputText/InputText";
+
+import iconCheckSquare from "../../assets/icon-check-square.svg";
 import "./Form.scss";
 
 export const Form = ({
@@ -88,7 +90,15 @@ export const Form = ({
     <>
       {data.map((item) => (
         <div key={item.fid} className="form">
-          <h3>{item.title}</h3>
+          <div className="form__title">
+            <h3>{item.title}</h3>
+            {isClosed && (
+              <div className="form__closed">
+                <img src={iconCheckSquare} alt="closed" />
+                <span>Hilo Cerrado</span>
+              </div>
+            )}
+          </div>
           <form className="form__container" onSubmit={onSubmit}>
             {item.questions.map((field) => (
               <div key={field.qid} className="form__question">

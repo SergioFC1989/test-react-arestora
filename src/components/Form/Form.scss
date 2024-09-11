@@ -12,6 +12,17 @@
     gap: 18px;
   }
 
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__closed {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
   &__render-check-box-input {
     width: 100%;
     padding: 2px;
