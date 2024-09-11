@@ -6,9 +6,9 @@ import { Loader } from "../../components/Loader/Loader";
 import { ThreadHtml } from "../../components/ThreadHtml/ThreadHtml";
 
 import { useThreadReducer } from "../../hooks/useThreadReducer";
-import "./ThreadContent.scss";
+import "./ThreadPage.scss";
 
-export const ThreadContent = () => {
+export const ThreadPage = () => {
   const { state, getThread } = useThreadReducer();
   const params = useParams();
 
