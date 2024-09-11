@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { HeaderBarCFS } from "../../components/HeaderBarCFS/HeaderBarCFS";
 import { Loader } from "../../components/Loader/Loader";
-import { ThreadHtml } from "../../components/Thread/ThreadHtml";
+import { ThreadHtml } from "../../components/ThreadHtml/ThreadHtml";
 
 import { useThreadReducer } from "../../hooks/useThreadReducer";
 import "./ThreadContent.scss";
