@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 
 import { HeaderBarCFS } from "../../components/HeaderBarCFS/HeaderBarCFS";
 import { Loader } from "../../components/Loader/Loader";
+import { ThreadHtml } from "../../components/Thread/ThreadHtml";
 
 import { useThreadReducer } from "../../hooks/useThreadReducer";
+import "./ThreadContent.scss";
 
 export const ThreadContent = () => {
   const { state, getThread } = useThreadReducer();
@@ -15,6 +17,8 @@ export const ThreadContent = () => {
       params.cfsToken &&
       getThread(params.cfsKey, params.cfsToken);
   }, [getThread]);
+
+  console.log(state.thread);
 
   if (state.loading) {
     return <Loader />;
@@ -31,6 +35,7 @@ export const ThreadContent = () => {
             new Date(a.date) < new Date(b.date) ? 1 : -1
           )}
         />
+        <ThreadHtml htmlContent={state.thread.content} />
       </section>
     )
   );
