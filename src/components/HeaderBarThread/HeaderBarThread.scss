@@ -1,0 +1,30 @@
+.header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--neutral-color);
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+  }
+
+  &__back-main {
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media (max-width: 420px) {
+    &__title {
+      flex-direction: column-reverse;
+      gap: 8px;
+      align-items: flex-start;
+    }
+  }
+}

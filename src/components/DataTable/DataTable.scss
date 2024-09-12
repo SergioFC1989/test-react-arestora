@@ -9,25 +9,22 @@
   padding: 10px;
   background-color: white;
 
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    min-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  tbody tr:nth-child(even) {
-    background-color: #ffffff;
-  }
-
-  tbody tr:nth-child(odd) {
-    background-color: #e7e7e7;
+  &__title {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
   }
 
   &__button {
     width: fit-content;
+  }
+
+  @media (max-width: 420px) {
+    &__title {
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
   }
 }

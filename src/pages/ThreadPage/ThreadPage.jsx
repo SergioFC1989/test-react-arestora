@@ -1,78 +1,17 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 import { Form } from "../../components/Form/Form";
-import { HeaderBarCFS } from "../../components/HeaderBarCFS/HeaderBarCFS";
+import { HeaderBarThread } from "../../components/HeaderBarThread/HeaderBarThread";
+import { HtmlContentViewer } from "../../components/HtmlContentViewer/HtmlContentViewer";
 import { Loader } from "../../components/Loader/Loader";
-import { ThreadHtml } from "../../components/ThreadHtml/ThreadHtml";
 
-import { useThreadReducer } from "../../hooks/useThreadReducer";
+import { useThreadPage } from "./useThreadPage";
+
 import "./ThreadPage.scss";
 
 export const ThreadPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const params = useParams();
-
-  const { state, getThread, acceptThread } = useThreadReducer();
-
-  useEffect(() => {
-    params.cfsKey &&
-      params.cfsToken &&
-      getThread(params.cfsKey, params.cfsToken);
-  }, [getThread]);
-
-  const mapEntriesToOids = (data) => {
-    return Object.entries(data).map(([oid, value]) => ({ oid, value }));
-  };
-
-  const onSubmit = async (data) => {
-    const mappedEntriesToOids = mapEntriesToOids(data);
-
-    const agreementData = {
-      ...state.thread,
-      agreement: {
-        ...state.thread.agreement,
-        forms: state.thread.agreement.forms.map((form) => ({
-          ...form,
-          questions: form.questions.map((question) => ({
-            ...question,
-            answers: question.options.map((option) => {
-              const valueOid = mappedEntriesToOids.find(
-                (elem) => String(elem.oid) === String(option.oid)
-              );
-
-              return {
-                ...option,
-                value: String(valueOid.value),
-              };
-            }),
-            options: question.options.map((option) => {
-              const defaultValue = question.type === "TEXT" ? "" : false;
-              const valueOid = mappedEntriesToOids.find(
-                (elem) => String(elem.oid) === String(option.oid)
-              );
-
-              return {
-                ...option,
-                value: String(valueOid.value) || String(defaultValue),
-              };
-            }),
-          })),
-        })),
-      },
-    };
-
-    await acceptThread(
-      params.cfsKey,
-      params.cfsToken,
-      agreementData.agreement.forms
-    );
-  };
+  const { register, handleOnSubmit, handleSubmit, errors, state } =
+    useThreadPage();
 
   if (state.loading) {
     return <Loader />;
@@ -81,7 +20,7 @@ export const ThreadPage = () => {
   return (
     state.thread && (
       <section className="thread-content">
-        <HeaderBarCFS
+        <HeaderBarThread
           cfsCode={state.thread.cfscode}
           senderUser={state.thread.sender.user}
           recipientAddress={state.thread.recipient.address}
@@ -89,9 +28,9 @@ export const ThreadPage = () => {
             new Date(a.date) < new Date(b.date) ? 1 : -1
           )}
         />
-        <ThreadHtml htmlContent={state.thread.content} />
+        <HtmlContentViewer htmlContent={state.thread.content} />
         <Form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleOnSubmit)}
           register={register}
           errors={errors}
           data={state.thread.agreement.forms}
