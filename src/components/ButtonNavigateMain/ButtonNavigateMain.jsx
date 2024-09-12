@@ -18,8 +18,6 @@ export const ButtonNavigateMain = ({
 }) => {
   const navigate = useNavigate();
 
-  const _color = color === "danger" ? "danger" : "primary";
-
   const handleOnClick = () => navigate("/");
 
   return (

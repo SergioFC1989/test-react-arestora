@@ -7,6 +7,20 @@ import { Loader } from "../Loader/Loader";
 import iconCheckSquare from "../../assets/icon-check-square.svg";
 import "./Form.scss";
 
+/**
+ * Form component renders a dynamic form based on provided data.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Function} props.onSubmit - The function to call when the form is submitted.
+ * @param {Array} props.data - The array of form data objects.
+ * @param {Function} props.register - The function to register form inputs.
+ * @param {Object} props.errors - The object containing form validation errors.
+ * @param {string} props.textButton - The text to display on the submit button.
+ * @param {boolean} props.isClosed - Flag indicating if the form is closed.
+ * @param {boolean} props.isLoading - Flag indicating if the form is in a loading state.
+ *
+ * @returns {JSX.Element} The rendered form component.
+ */
 export const Form = ({
   onSubmit,
   data,
